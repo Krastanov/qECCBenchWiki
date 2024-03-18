@@ -1,0 +1,2 @@
+[console_scripts]
+pymatching = pymatching._cli_argv:cli_argv

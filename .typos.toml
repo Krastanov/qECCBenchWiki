@@ -1,0 +1,10 @@
+[default.extend-words]
+ket = "ket"
+
+[type.ipynb]
+# It detects false possitives in the base64 encoded images inside notebooks
+extend-glob = ["*.ipynb"]
+check-file = false
+
+[files]
+extend-exclude = ["__site/*", "_css/*", "_asserts/*", "_libs/*", "_rss/*"]

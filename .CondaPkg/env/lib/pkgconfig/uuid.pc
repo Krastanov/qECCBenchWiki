@@ -1,0 +1,11 @@
+prefix=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env
+exec_prefix=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env
+libdir=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib
+includedir=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.38.1
+Requires:
+Cflags: -I${includedir}/uuid
+Libs: -L${libdir} -luuid

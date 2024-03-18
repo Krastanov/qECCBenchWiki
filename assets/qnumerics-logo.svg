@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 241.52 167.28">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #9459b3;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-4 {
+        fill: #d23931;
+        font-size: 7px;
+      }
+
+      .cls-4, .cls-5 {
+        font-family: Roboto-Bold, Roboto;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        stroke: #369924;
+      }
+
+      .cls-3 {
+        stroke: #d23931;
+      }
+
+      .cls-5 {
+        fill: #000;
+        font-size: 42.43px;
+      }
+
+      .cls-6 {
+        fill: #369924;
+      }
+
+      .cls-6, .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-7 {
+        fill: #9459b3;
+      }
+    </style>
+  </defs>
+  <ellipse class="cls-1" cx="121.09" cy="59.31" rx="16.97" ry="57.81" transform="translate(6.78 130.83) rotate(-58.13)"/>
+  <ellipse class="cls-3" cx="121.09" cy="59.31" rx="57.81" ry="16.97" transform="translate(-12.64 76.55) rotate(-33.44)"/>
+  <ellipse class="cls-2" cx="121.09" cy="59.31" rx="16.97" ry="57.81"/>
+  <circle class="cls-7" cx="120.73" cy="58.78" r="8.84"/>
+  <circle class="cls-6" cx="72.64" cy="91.32" r="5.3"/>
+  <circle class="cls-6" cx="169.53" cy="27.67" r="5.3"/>
+  <text class="cls-4" transform="translate(113.45 16.64)"><tspan x="0" y="0">1001</tspan><tspan x="0" y="8.4">1011</tspan><tspan x="0" y="16.8">1101</tspan></text>
+  <text class="cls-5" transform="translate(0 155.78)"><tspan x="0" y="0">Q</tspan><tspan x="29.3" y="0">NUMERICS</tspan></text>
+  <text class="cls-4" transform="translate(112.57 91.54)"><tspan x="0" y="0">1101</tspan><tspan x="0" y="8.4">1001</tspan><tspan x="0" y="16.8">1011</tspan></text>
+</svg>
