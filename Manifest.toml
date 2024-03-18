@@ -6,9 +6,9 @@ project_hash = "c09316dd5ddb5b6c7fb9544206a916b492fa001d"
 
 [[deps.AbstractAlgebra]]
 deps = ["InteractiveUtils", "LinearAlgebra", "MacroTools", "Preferences", "Random", "RandomExtensions", "SparseArrays", "Test"]
-git-tree-sha1 = "d7928cad94e4e89b61f4513b5992b3553557aec6"
+git-tree-sha1 = "a9f46b73ce3e3e6e0fdb0245b47db59dc99cb85d"
 uuid = "c3fe647b-3220-5bb0-a1ea-a7954cac585d"
-version = "0.40.2"
+version = "0.40.3"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
