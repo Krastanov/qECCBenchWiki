@@ -1,7 +1,7 @@
 isreusableandthreadsafe(_) = false
 isreusableandthreadsafe(::Type{TableDecoder}) = true
 
-goodnsamples(m) = Int(ceil(100/m))
+goodnsamples(m) = Int(ceil(40/m))
 
 function evaluate_codes_decoders_setups(codes,decoders,setups;
     errrange=(eᵐⁱⁿ, eᵐᵃˣ, steps), # the default from globals defined in code_metadata.jl
@@ -17,15 +17,15 @@ function evaluate_codes_decoders_setups(codes,decoders,setups;
         H = parity_checks(c)
         for iᵈ in eachindex(decoders)
             d = decoders[iᵈ]
-            decoder = isreusableandthreadsafe(d) ? d(H) : nothing
+            decoder = isreusableandthreadsafe(d) ? d(c) : nothing
             for iˢ in eachindex(setups)
                 s = setups[iˢ]
                 #Threads.@spawn begin
-                    @show (c, d, s, Threads.threadid())
+                    #@show (c, d, s, Threads.threadid())
                     done_samples = 0
                     @withprogress name="$(c) $(d) $(s)" for iᵉ in reverse(eachindex(errors)) # reverse to get the smaller tasks first, to populate the progress bar
                         e = errors[iᵉ]
-                        decoder = isnothing(decoder) ? d(H) : decoder
+                        decoder = isnothing(decoder) ? d(c) : decoder
                         setup = s(e)
                         samples = goodnsamples(e)
                         r = evaluate_decoder(decoder, setup, samples)

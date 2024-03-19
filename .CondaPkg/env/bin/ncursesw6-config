@@ -249,7 +249,7 @@ ENDECHO
 		;;
 	# identification
 	--version)
-		echo "6.4.20221231"
+		echo "6.4.20240210"
 		;;
 	--abi-version)
 		echo "6"

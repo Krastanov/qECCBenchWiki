@@ -7,7 +7,7 @@ libdir=${exec_prefix}/lib
 includedir=${prefix}/include/ncursesw
 abi_version=6
 major_version=6
-version=6.4.20221231
+version=6.4.20240210
 
 Name: tinfow
 Description: ncurses 6.4 terminal interface library

@@ -7,7 +7,7 @@ libdir=${exec_prefix}/lib
 includedir=${prefix}/include/ncurses
 abi_version=6
 major_version=6
-version=6.4.20221231
+version=6.4.20240210
 
 Name: menu
 Description: ncurses 6.4 add-on library

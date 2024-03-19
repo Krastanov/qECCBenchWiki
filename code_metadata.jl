@@ -49,14 +49,13 @@ const code_metadata = Dict(
         :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
         :description => "The `[[8,3,3]]` code from Cleve and Gottesman (1997), a convenient pedagogical example when studying how to construct encoding circuits, as it is one of the smallest codes with more than one logical qubit.",
     ),
-    #=
     Toric => Dict(
-        :family => [(3,3), (4,4)],
-        :decoders => [TableDecoder],
+        :family => [(3,3), (4,4), (6,6), (8,8), (10,10), (12,12)],
+        :decoders => [TableDecoder, PyMatchingDecoder],
         :setups => [CommutationCheckECCSetup],
         :ecczoo => "https://errorcorrectionzoo.org/c/surface",
         :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
+        :description => "The famous toric code, the first topological code. Terrible rate, ok-ish distance, awesome locality -- a tradeoff that will turn out to be fundamental to codes with only 2D connectivity.",
     ),
-    =#
 
 )

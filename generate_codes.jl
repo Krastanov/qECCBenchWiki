@@ -60,12 +60,15 @@ function prep_figures(code_metada)
         e = logrange(errrange...)
         r = dbnarray(codes, decoders, setups, e)
 
+        single_error = length(decoders)>1 || decoders==[TableDecoder]
+
         # Plotting summary fig
         f = make_decoder_figure(e, r;
             title="$(codeentry)",
             colorlabels=string.(codes),
             linestylelabels=string.(decoders),
-            markerlabels=string.(setups)
+            markerlabels=string.(setups),
+            single_error
         )
         save("codes/$(codeentry)/totalsummary.png", f)
 
@@ -77,20 +80,22 @@ function prep_figures(code_metada)
             stabilizerplot_axis(sf, parity_checks(c))
             save("codes/$(codeentry)/$(c).png", f)
             # Plotting circuits
-            try
-                savecircuit(naive_encoding_circuit(c), "codes/$(codeentry)/$(c)_encoding.png")
-            catch
-                @error "$(c) failed to plot `naive_encoding_circuit`"
-            end
-            try
-                savecircuit(naive_syndrome_circuit(c)[1], "codes/$(codeentry)/$(c)_naive_syndrome.png")
-            catch
-                @error "$(c) failed to plot `naive_syndrome_circuit`"
-            end
-            try
-                savecircuit(vcat(shor_syndrome_circuit(c)[1:2]...), "codes/$(codeentry)/$(c)_naive_syndrome.png")
-            catch
-                @error "$(c) failed to plot `shor_syndrome_circuit`"
+            if nqubits(c) <= 15
+                try
+                    savecircuit(naive_encoding_circuit(c), "codes/$(codeentry)/$(c)_encoding.png")
+                catch
+                    @error "$(c) failed to plot `naive_encoding_circuit`"
+                end
+                try
+                    savecircuit(naive_syndrome_circuit(c)[1], "codes/$(codeentry)/$(c)_naive_syndrome.png")
+                catch
+                    @error "$(c) failed to plot `naive_syndrome_circuit`"
+                end
+                try
+                    savecircuit(vcat(shor_syndrome_circuit(c)[1:2]...), "codes/$(codeentry)/$(c)_naive_syndrome.png")
+                catch
+                    @error "$(c) failed to plot `shor_syndrome_circuit`"
+                end
             end
         end
     end
