@@ -8,6 +8,8 @@ const eᵐⁱⁿ = 0.00001
 const eᵐᵃˣ = 0.3
 const steps = 20
 
+include("hodgepodge/hodgepodge_codes.jl")
+
 const code_metadata = Dict(
     Gottesman => Dict(
         :family => [(3,),(4,),(5,),(6,)],
@@ -57,5 +59,20 @@ const code_metadata = Dict(
         :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
         :description => "The famous toric code, the first topological code. Terrible rate, ok-ish distance, awesome locality -- a tradeoff that will turn out to be fundamental to codes with only 2D connectivity.",
     ),
-
+    Surface => Dict(
+        :family => [(3,3), (4,4), (6,6), (8,8), (10,10), (12,12)],
+        :decoders => [TableDecoder, PyMatchingDecoder],
+        :setups => [CommutationCheckECCSetup],
+        :ecczoo => "https://errorcorrectionzoo.org/c/surface",
+        :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
+        :description => "An open-boundary version of the famous toric code, the first topological code. Terrible rate, ok-ish distance, awesome locality -- a tradeoff that will turn out to be fundamental to codes with only 2D connectivity.",
+    ),
+    Hodgepodge.NithinCode => Dict(
+        :family => [()],
+        :decoders => [TableDecoder, PyBeliefPropDecoder, PyBeliefPropOSDecoder],
+        :setups => [CommutationCheckECCSetup],
+        :ecczoo => "",
+        :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
+        :description => "My friend Nithin made this one. It is here as an example placeholder as we built out the page for this code family.",
+    ),
 )
