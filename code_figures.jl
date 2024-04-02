@@ -3,7 +3,7 @@ skipzeronan(xs) = (x for x in xs if x!=0 && !isnan(x))
 function make_decoder_figure(phys_errors, results;
     title="",
     colors=Makie.wong_colors(),
-    linestyles=[:solid, :dash, :dot, :dashdot, :dashdotdot, :dashdotdotdot],
+    linestyles=[:solid, :dash, :dot, :dashdot, :dashdotdot, Linestyle([0.5, 1.0, 1.5, 2.5])],
     markers=['●', '■', '▲', '▼', '◆', '★'],
     single_error=false,
     colorlabels=[], linestylelabels=[], markerlabels=[],
@@ -15,7 +15,7 @@ function make_decoder_figure(phys_errors, results;
     fresults = copy(results)
     fresults[results.==0] .= NaN
 
-    f = Figure(size=(700,400))
+    f = Figure(size=(1200,400))
     a = Axis(f[1:3,1:3],
         xscale=log10, yscale=log10,
         limits=(minlim,maxlim,minlim,maxlim),

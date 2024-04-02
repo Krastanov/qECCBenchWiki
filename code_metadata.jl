@@ -10,6 +10,25 @@ const steps = 20
 
 include("hodgepodge/hodgepodge_codes.jl")
 
+struct KWFun
+    f
+    kwargs
+end
+
+function (f::KWFun)(c)
+    f.f(c; f.kwargs...)
+end
+
+function skipredundantsuffix(x::KWFun)
+    f = skipredundantsuffix(x.f)
+    return "$f($(join(["$k=$v" for (k,v) in pairs(x.kwargs)], ", ")))"
+end
+
+function Base.string(x::KWFun)
+    f = string(x.f)
+    return "$f(_;$(join(["$k=$v" for (k,v) in pairs(x.kwargs)], ", ")))"
+end
+
 const code_metadata = Dict(
     Gottesman => Dict(
         :family => [(3,),(4,),(5,),(6,)],
@@ -69,7 +88,10 @@ const code_metadata = Dict(
     ),
     Hodgepodge.NithinCode => Dict(
         :family => [()],
-        :decoders => [TableDecoder, PyBeliefPropDecoder, PyBeliefPropOSDecoder],
+        :decoders => [TableDecoder,
+                      KWFun(PyBeliefPropDecoder, (;bpmethod=:productsum)),
+                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum)),
+        ],
         :setups => [CommutationCheckECCSetup],
         :ecczoo => "",
         :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
