@@ -25,33 +25,6 @@ global_logger(TerminalLogger(right_justify=120))
 
 ##
 
-function instancenameof(x)
-    t = typeof(x)
-    str = string(nameof(t))*"("
-    nf = nfields(x)
-    nb = sizeof(x)
-    if nf != 0 || nb == 0
-        for i in 1:nf
-            f = fieldname(t, i)
-            str *= string(getfield(x, i))
-            if i < nf
-                str *= ", "
-            end
-        end
-    end
-    str *= ")"
-    return str
-end
-
-function skipredundantsuffix(x)
-    x = string(x)
-    xs = split(x, "(")
-    xs = [chopsuffix(chopsuffix(x, "Decoder"), "ECCSetup") for x in xs]
-    return join(xs, "(")
-end
-
-##
-
 include("code_metadata.jl")
 
 include("code_markdown.jl")
@@ -97,9 +70,9 @@ function prep_figures(code_metada)
         # Plotting summary fig
         f = make_decoder_figure(e, r;
             title="$(codeentryname)",
-            colorlabels=instancenameof.(codes),
-            linestylelabels=skipredundantsuffix.(decoders),
-            markerlabels=skipredundantsuffix.(setups),
+            codelabels=instancenameof.(codes),
+            decoderlabels=skipredundantsuffix.(decoders),
+            setuplabels=skipredundantsuffix.(setups),
             single_error
         )
         save("codes/$(codeentryname)/totalsummary.png", f)

@@ -1043,14 +1043,15 @@ def block_diag(mats, format=None, dtype=None):
     c_idx = 0
     for a in mats:
         if isinstance(a, (list, numbers.Number)):
-            a = coo_array(a)
-        nrows, ncols = a.shape
+            a = coo_array(np.atleast_2d(a))
         if issparse(a):
             a = a.tocoo()
+            nrows, ncols = a._shape_as_2d
             row.append(a.row + r_idx)
             col.append(a.col + c_idx)
             data.append(a.data)
         else:
+            nrows, ncols = a.shape
             a_row, a_col = np.divmod(np.arange(nrows*ncols), ncols)
             row.append(a_row + r_idx)
             col.append(a_col + c_idx)
@@ -1207,7 +1208,7 @@ def _random(shape, density=0.01, format=None, dtype=None,
     # rng.choice uses int64 if first arg is an int
     if tot_prod < np.iinfo(np.int64).max:
         raveled_ind = rng.choice(tot_prod, size=size, replace=False)
-        ind = np.unravel_index(raveled_ind, shape=shape)
+        ind = np.unravel_index(raveled_ind, shape=shape, order='F')
     else:
         # for ravel indices bigger than dtype max, use sets to remove duplicates
         ndim = len(shape)

@@ -23,7 +23,7 @@ function evaluate_codes_decoders_setups(codes,decoders,setups;
                 #Threads.@spawn begin
                     #@show (c, d, s, Threads.threadid())
                     done_samples = 0
-                    @withprogress name="$(c) $(d) $(s)" for iᵉ in reverse(eachindex(errors)) # reverse to get the smaller tasks first, to populate the progress bar
+                    @withprogress name="$(instancenameof(c)) $(skipredundantsuffix(d)) $(skipredundantsuffix(s))" for iᵉ in reverse(eachindex(errors)) # reverse to get the smaller tasks first, to populate the progress bar
                         e = errors[iᵉ]
                         decoder = isnothing(decoder) ? d(c) : decoder
                         setup = s(e)

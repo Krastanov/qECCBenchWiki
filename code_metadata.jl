@@ -1,33 +1,15 @@
 using QuantumClifford
 using QuantumClifford.ECC
-using PyQDecoders
-using LDPCDecoders
+import PyQDecoders
+import LDPCDecoders
 
 logrange(eᵐⁱⁿ, eᵐᵃˣ, steps) = exp.(range(log(eᵐⁱⁿ), log(eᵐᵃˣ), length=steps))
 const eᵐⁱⁿ = 0.00001
 const eᵐᵃˣ = 0.3
 const steps = 20
 
+include("code_helpers.jl")
 include("hodgepodge/hodgepodge_codes.jl")
-
-struct KWFun
-    f
-    kwargs
-end
-
-function (f::KWFun)(c)
-    f.f(c; f.kwargs...)
-end
-
-function skipredundantsuffix(x::KWFun)
-    f = skipredundantsuffix(x.f)
-    return "$f($(join(["$k=$v" for (k,v) in pairs(x.kwargs)], ", ")))"
-end
-
-function Base.string(x::KWFun)
-    f = string(x.f)
-    return "$f(_;$(join(["$k=$v" for (k,v) in pairs(x.kwargs)], ", ")))"
-end
 
 const code_metadata = Dict(
     Gottesman => Dict(
@@ -89,8 +71,11 @@ const code_metadata = Dict(
     Hodgepodge.NithinCode => Dict(
         :family => [()],
         :decoders => [TableDecoder,
-                      KWFun(PyBeliefPropDecoder, (;bpmethod=:productsum)),
-                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum)),
+                      BeliefPropDecoder,
+                      BitFlipDecoder,
+                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:zeroorder)),
+                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:exhaustive, osdorder=5)),
+                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:combinationsweep, osdorder=10)),
         ],
         :setups => [CommutationCheckECCSetup],
         :ecczoo => "",
