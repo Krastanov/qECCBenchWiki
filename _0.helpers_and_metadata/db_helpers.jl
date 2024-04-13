@@ -1,5 +1,11 @@
+module DBHelpers
+
 using SQLite
 using DBInterface
+
+include("../_0.helpers_and_metadata/helpers.jl")
+
+using .Helpers: logrange, instancenameof, skipredundantprefix, typenameof
 
 const CONN = DBInterface.connect(SQLite.DB, "codes/results.sqlite")
 
@@ -14,9 +20,9 @@ let
 end
 
 function dbrow(code, decoder, setup, e)
-    code = string(code)
-    decoder = string(decoder)
-    setup = string(setup)
+    code = skipredundantprefix(instancenameof(code))
+    decoder = skipredundantprefix(decoder)
+    setup = skipredundantprefix(setup)
     res = DBInterface.execute(
         CONN,
         "SELECT * FROM results WHERE code=? AND decoder=? AND setup=? AND error=?",
@@ -48,9 +54,9 @@ function dbrow!(code, decoder, setup, e, n, le)
 end
 
 function dbrow!(code, decoder, setup, e, n, lx, lz)
-    code = string(code)
-    decoder = string(decoder)
-    setup = string(setup)
+    code = skipredundantfix(instancenameof(code))
+    decoder = skipredundantfix(decoder)
+    setup = skipredundantfix(setup)
     old = dbrow(code, decoder, setup, e)
     newn, newlx, newlz = if isnothing(old)
         n, lx, lz
@@ -65,4 +71,6 @@ function dbrow!(code, decoder, setup, e, n, lx, lz)
         newrow
     )
     return newrow
+end
+
 end

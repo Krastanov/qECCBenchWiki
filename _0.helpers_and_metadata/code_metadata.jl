@@ -1,15 +1,18 @@
+module CodeMetadata
+
 using QuantumClifford
 using QuantumClifford.ECC
 import PyQDecoders
 import LDPCDecoders
 
-logrange(eᵐⁱⁿ, eᵐᵃˣ, steps) = exp.(range(log(eᵐⁱⁿ), log(eᵐᵃˣ), length=steps))
 const eᵐⁱⁿ = 0.00001
 const eᵐᵃˣ = 0.3
 const steps = 20
 
-include("code_helpers.jl")
+include("helpers.jl")
 include("hodgepodge/hodgepodge_codes.jl")
+
+using .Helpers: logrange
 
 const code_metadata = Dict(
     Gottesman => Dict(
@@ -73,9 +76,9 @@ const code_metadata = Dict(
         :decoders => [TableDecoder,
                       BeliefPropDecoder,
                       BitFlipDecoder,
-                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:zeroorder)),
-                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:exhaustive, osdorder=5)),
-                      KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:combinationsweep, osdorder=10)),
+                      Helpers.KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:zeroorder)),
+                      Helpers.KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:exhaustive, osdorder=5)),
+                      Helpers.KWFun(PyBeliefPropOSDecoder, (;bpmethod=:productsum, osdmethod=:combinationsweep, osdorder=10)),
         ],
         :setups => [CommutationCheckECCSetup],
         :ecczoo => "",
@@ -83,3 +86,5 @@ const code_metadata = Dict(
         :description => "My friend Nithin made this one. It is here as an example placeholder as we built out the page for this code family.",
     ),
 )
+
+end

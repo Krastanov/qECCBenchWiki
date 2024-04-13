@@ -1,3 +1,9 @@
+module Helpers
+
+logrange(eᵐⁱⁿ, eᵐᵃˣ, steps) = exp.(range(log(eᵐⁱⁿ), log(eᵐᵃˣ), length=steps))
+
+typenameof(t) = nameof(t)
+
 function instancenameof(x)
     t = typeof(x)
     str = string(nameof(t))*"("
@@ -16,12 +22,26 @@ function instancenameof(x)
     return str
 end
 
+function skipredundantprefix(x)
+    x = string(x)
+    return chopprefix(chopprefix(x, "QuantumClifford.ECC."), "Main.")
+end
+
 function skipredundantsuffix(x)
     x = string(x)
     xs = split(x, "(")
-    xs = [chopsuffix(chopsuffix(x, "Decoder"), "ECCSetup") for x in xs]
+    xs = [
+        chopsuffix(chopsuffix(x, "Decoder"), "ECCSetup")
+        for x in xs
+    ]
     return join(xs, "(")
 end
+
+function skipredundantfix(x)
+    x = string(x)
+    return skipredundantsuffix(skipredundantprefix(x))
+end
+
 
 struct KWFun
     f
@@ -32,8 +52,10 @@ function (f::KWFun)(c)
     f.f(c; f.kwargs...)
 end
 
-function skipredundantsuffix(x::KWFun)
-    f = skipredundantsuffix(x.f)
+typenameof(t::KWFun) = nameof(t.f)
+
+function skipredundantfix(x::KWFun)
+    f = skipredundantfix(x.f)
     return "$f($(join(["$k=$v" for (k,v) in pairs(x.kwargs)], ", ")))"
 end
 
@@ -42,5 +64,4 @@ function Base.string(x::KWFun)
     return "$f(_;$(join(["$k=$v" for (k,v) in pairs(x.kwargs)], ", ")))"
 end
 
-typename(t) = nameof(t)
-typename(t::KWFun) = nameof(t.f)
+end
