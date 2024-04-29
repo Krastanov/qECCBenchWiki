@@ -3,6 +3,19 @@ module CodeBenchmark
 using QuantumClifford
 using QuantumClifford.ECC
 
+using Logging # TODO this would be unnecessary if we solve https://github.com/QuantumSavory/QuantumClifford.jl/issues/261
+infologger = ConsoleLogger(stderr, Logging.Error)
+function sup(f, warn)
+    if warn
+        f()
+    else
+        with_logger(infologger) do
+            f()
+        end
+     end
+end
+
+
 using ProgressLogging: @withprogress, @logprogress
 
 include("../_0.helpers_and_metadata/helpers.jl")
@@ -18,6 +31,7 @@ goodnsamples(m) = get(ENV,"ECCBENCHWIKI_QUICKCHECK", "")=="" ? Int(ceil(40/m)) :
 
 function evaluate_codes_decoders_setups(codes,decoders,setups;
     errrange=(eᵐⁱⁿ, eᵐᵃˣ, steps), # the default from globals defined in code_metadata.jl
+    warn=true
 )
     errors = logrange(errrange...)
     nsamples = goodnsamples.(errors)
@@ -39,12 +53,14 @@ function evaluate_codes_decoders_setups(codes,decoders,setups;
                 #Threads.@spawn begin
                     #@show (c, d, s, Threads.threadid())
                     done_samples = 0
-                    @withprogress name="$(cname) $(dname) $(sname)" for iᵉ in reverse(eachindex(errors)) # reverse to get the smaller tasks first, to populate the progress bar
+                    @withprogress name="$(rpad(cname,15))|$(rpad(dname[1:min(20,end)],20))|$(rpad(sname,20))" for iᵉ in reverse(eachindex(errors)) # reverse to get the smaller tasks first, to populate the progress bar
                         e = errors[iᵉ]
-                        decoder = isnothing(decoder) ? d(c) : decoder
-                        setup = s(e)
                         samples = goodnsamples(e)
-                        r = evaluate_decoder(decoder, setup, samples)
+                        r = sup(warn) do # TODO this would be much better and cleaner if we solve https://github.com/QuantumSavory/QuantumClifford.jl/issues/261
+                            decoder = isnothing(decoder) ? d(c) : decoder
+                            setup = s(e)
+                            evaluate_decoder(decoder, setup, samples)
+                        end
                         _,_,_,_,_, logx, logz = dbrow!(c,d,s,e,samples,r...)
                         results[iᵉ,:,iᶜ,iᵈ,iˢ] .= (logx, logz)
                         done_samples += samples

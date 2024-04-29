@@ -29,10 +29,10 @@ MODLIBS=           $(LOCALMODLIBS) $(BASEMODLIBS)
 
 # === Variables set by configure
 VERSION=	3.12
-srcdir=		/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work
-VPATH=		/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work
-abs_srcdir=	/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work
-abs_builddir=	/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work/build-static
+srcdir=		/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work
+VPATH=		/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work
+abs_srcdir=	/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work
+abs_builddir=	/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work/build-static
 
 
 CC=		x86_64-conda-linux-gnu-gcc -pthread
@@ -82,7 +82,7 @@ MAKESETUP=      $(srcdir)/Modules/makesetup
 OPT=		-DNDEBUG -O2 -Wall
 BASECFLAGS=	 -fno-strict-overflow
 BASECPPFLAGS=	-IObjects -IInclude -IPython
-CONFIGURE_CFLAGS=	-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work=/usr/local/src/conda/python-3.12.2 -fdebug-prefix-map=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env=/usr/local/src/conda-prefix    
+CONFIGURE_CFLAGS=	-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work=/usr/local/src/conda/python-3.12.3 -fdebug-prefix-map=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env=/usr/local/src/conda-prefix    
 # CFLAGS_NODIST is used for building the interpreter and stdlib C extensions.
 # Use it when a compiler flag should _not_ be part of the distutils CFLAGS
 # once Python is installed (Issue #21121).
@@ -370,7 +370,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	 '--prefix=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env' '--build=x86_64-conda-linux-gnu' '--host=x86_64-conda-linux-gnu' '--enable-ipv6' '--with-ensurepip=no' '--with-tzpath=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/share/zoneinfo' '--with-computed-gotos' '--with-system-expat' '--enable-loadable-sqlite-extensions' '--with-tcltk-includes=-I/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include' '--with-tcltk-libs=-L/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib -ltcl8.6 -ltk8.6' '--with-platlibdir=lib' '--with-lto=full' '--enable-optimizations' '-oldincludedir=/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/_build_env/x86_64-conda-linux-gnu/sysroot/usr/include' '--disable-shared' 'PROFILE_TASK=-m test --pgo' 'build_alias=x86_64-conda-linux-gnu' 'host_alias=x86_64-conda-linux-gnu' 'PKG_CONFIG_PATH=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib/pkgconfig' 'MACHDEP=linux' 'CC=x86_64-conda-linux-gnu-gcc' 'CFLAGS=-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work=/usr/local/src/conda/python-3.12.2 -fdebug-prefix-map=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env=/usr/local/src/conda-prefix    ' 'LDFLAGS=-Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib -Wl,-rpath-link,/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib -L/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib' 'CPPFLAGS=-DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -I/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include' 'CPP=/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/_build_env/bin/x86_64-conda-linux-gnu-cpp'
+CONFIG_ARGS=	 '--prefix=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env' '--build=x86_64-conda-linux-gnu' '--host=x86_64-conda-linux-gnu' '--enable-ipv6' '--with-ensurepip=no' '--with-tzpath=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/share/zoneinfo' '--with-computed-gotos' '--with-system-expat' '--enable-loadable-sqlite-extensions' '--with-tcltk-includes=-I/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include' '--with-tcltk-libs=-L/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib -ltcl8.6 -ltk8.6' '--with-platlibdir=lib' '--with-lto=full' '--enable-optimizations' '-oldincludedir=/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/_build_env/x86_64-conda-linux-gnu/sysroot/usr/include' '--disable-shared' 'PROFILE_TASK=-m test --pgo' 'build_alias=x86_64-conda-linux-gnu' 'host_alias=x86_64-conda-linux-gnu' 'PKG_CONFIG_PATH=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib/pkgconfig' 'MACHDEP=linux' 'CC=x86_64-conda-linux-gnu-gcc' 'CFLAGS=-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work=/usr/local/src/conda/python-3.12.3 -fdebug-prefix-map=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env=/usr/local/src/conda-prefix    ' 'LDFLAGS=-Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib -Wl,-rpath-link,/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib -L/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/lib' 'CPPFLAGS=-DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -I/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include' 'CPP=/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/_build_env/bin/x86_64-conda-linux-gnu-cpp'
 
 
 # Subdirectories with code
@@ -1471,9 +1471,9 @@ regen-limited-abi: all
 regen-all: regen-cases regen-opcode regen-opcode-targets regen-typeslots \
 	regen-token regen-ast regen-keyword regen-sre regen-frozen \
 	regen-pegen-metaparser regen-pegen regen-test-frozenmain \
-	regen-test-levenshtein regen-global-objects regen-sbom
+	regen-test-levenshtein regen-global-objects
 	@echo
-	@echo "Note: make regen-stdlib-module-names and make regen-configure should be run manually"
+	@echo "Note: make regen-stdlib-module-names, make-regen-sbom, and make regen-configure should be run manually"
 
 ############################################################################
 # Special rules for object files
@@ -2359,6 +2359,7 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/test_lib2to3/data/fixers/myfixes \
 		test/test_module \
 		test/test_peg_generator \
+		test/test_pydoc \
 		test/test_sqlite3 \
 		test/test_tkinter \
 		test/test_tomllib \
@@ -2395,7 +2396,11 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/wheeldata \
 		test/xmltestdata \
 		test/xmltestdata/c14n-20 \
-		test/ziptestdata
+		test/ziptestdata \
+		test/test_concurrent_futures \
+		test/test_multiprocessing_fork \
+		test/test_multiprocessing_forkserver \
+		test/test_multiprocessing_spawn
 
 COMPILEALL_OPTS=-j0
 

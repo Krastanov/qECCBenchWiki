@@ -84,6 +84,7 @@ const code_metadata = Dict(
         :ecczoo => "",
         :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps),
         :description => "My friend Nithin made this one. It is here as an example placeholder as we built out the page for this code family.",
+        :redundantrows => true,
     ),
 )
 

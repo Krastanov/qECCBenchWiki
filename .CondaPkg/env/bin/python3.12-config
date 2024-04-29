@@ -35,7 +35,7 @@ exec_prefix="${prefix}"
 exec_prefix_real=${prefix_real}
 includedir=$(echo "${prefix}/include" | sed "s#$prefix#$prefix_real#")
 libdir=$(echo "${exec_prefix}/lib" | sed "s#$prefix#$prefix_real#")
-CFLAGS=$(echo "-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O3 -ffunction-sections -pipe -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/python-split_1708115583107/work=/usr/local/src/conda/python-3.12.2 -fdebug-prefix-map=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env=/usr/local/src/conda-prefix -fuse-linker-plugin -ffat-lto-objects -flto-partition=none -flto" | sed "s#$prefix#$prefix_real#")
+CFLAGS=$(echo "-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O3 -ffunction-sections -pipe -isystem /home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/python-split_1713204800955/work=/usr/local/src/conda/python-3.12.3 -fdebug-prefix-map=/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env=/usr/local/src/conda-prefix -fuse-linker-plugin -ffat-lto-objects -flto-partition=none -flto" | sed "s#$prefix#$prefix_real#")
 VERSION="3.12"
 LIBM="-lm"
 LIBC=""

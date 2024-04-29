@@ -8,25 +8,24 @@ include("../_0.helpers_and_metadata/helpers.jl")
 using .Helpers: logrange, instancenameof, skipredundantprefix, typenameof
 
 const CONN = DBInterface.connect(SQLite.DB, "codes/results.sqlite")
+SQLite.busy_timeout(CONN, 100)
 
-let
-    stmt = DBInterface.prepare(
-        CONN,
-        """CREATE TABLE IF NOT EXISTS results
-        (code TEXT, decoder TEXT, setup TEXT, error REAL, nsamples INTEGER, logx REAL, logz REAL,
-         PRIMARY KEY (code, decoder, setup, error))"""
-    )
-    results = DBInterface.execute(stmt)
-end
+DBInterface.execute(
+    CONN,
+    """CREATE TABLE IF NOT EXISTS results
+    (code TEXT, decoder TEXT, setup TEXT, error REAL, nsamples INTEGER, logx REAL, logz REAL,
+        PRIMARY KEY (code, decoder, setup, error))"""
+)
+DBInterface.execute(CONN, "PRAGMA journal_mode=WAL")
 
 function dbrow(code, decoder, setup, e)
-    code = skipredundantprefix(instancenameof(code))
-    decoder = skipredundantprefix(decoder)
-    setup = skipredundantprefix(setup)
+    coden = skipredundantprefix(instancenameof(code))
+    decodern = skipredundantprefix(decoder)
+    setupn = skipredundantprefix(setup)
     res = DBInterface.execute(
         CONN,
         "SELECT * FROM results WHERE code=? AND decoder=? AND setup=? AND error=?",
-        (code, decoder, setup, e))
+        (coden, decodern, setupn, e))
     isempty(res) ? nothing : first(res)
 end
 
@@ -54,23 +53,36 @@ function dbrow!(code, decoder, setup, e, n, le)
 end
 
 function dbrow!(code, decoder, setup, e, n, lx, lz)
-    code = skipredundantfix(instancenameof(code))
-    decoder = skipredundantfix(decoder)
-    setup = skipredundantfix(setup)
-    old = dbrow(code, decoder, setup, e)
-    newn, newlx, newlz = if isnothing(old)
-        n, lx, lz
-    else
-        newn = n + old.nsamples
-        newn, (lx * n + old.logx * old.nsamples) / newn, (lz * n + old.logz * old.nsamples) / newn
+    coden = skipredundantprefix(instancenameof(code))
+    decodern = skipredundantprefix(decoder)
+    setupn = skipredundantprefix(setup)
+    while true # retry on sqlite busy
+        try
+            newrow = DBInterface.transaction(CONN) do
+                old = dbrow(code, decoder, setup, e)
+                newn, newlx, newlz = if isnothing(old)
+                    n, lx, lz
+                else
+                    newn = n + old.nsamples
+                    newn, (lx * n + old.logx * old.nsamples) / newn, (lz * n + old.logz * old.nsamples) / newn
+                end
+                newrow = coden, decodern, setupn, e, newn, newlx, newlz
+                DBInterface.execute(
+                    CONN,
+                    "REPLACE INTO results (code, decoder, setup, error, nsamples, logx, logz) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    newrow
+                )
+                newrow
+            end
+            return newrow
+        catch e
+            if e == SQLite.SQLiteException("database is locked")
+                @debug "Database locked, retrying..."
+            else
+                rethrow(e)
+            end
+        end
     end
-    newrow = code, decoder, setup, e, newn, newlx, newlz
-    res = DBInterface.execute(
-        CONN,
-        "REPLACE INTO results (code, decoder, setup, error, nsamples, logx, logz) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        newrow
-    )
-    return newrow
 end
 
 end

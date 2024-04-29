@@ -34,7 +34,8 @@ function run_evaluations(code_metadata; include=nothing)
         setups = metadata[:setups]
         errrange = metadata[:errrange]
         @info "Evaluating $(codetypename) ..."
-        e, n, r = evaluate_codes_decoders_setups(codes, decoders, setups; errrange)
+        warn = !get(metadata, :redundantrows, false)
+        e, n, r = evaluate_codes_decoders_setups(codes, decoders, setups; errrange, warn)
     end
 end
 
