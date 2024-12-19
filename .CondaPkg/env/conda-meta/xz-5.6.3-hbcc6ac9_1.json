@@ -1,0 +1,40 @@
+{
+    "arch": "x86_64",
+    "build": "hbcc6ac9_1",
+    "build_number": 1,
+    "build_string": "hbcc6ac9_1",
+    "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+    "constrains": [],
+    "depends": [
+        "__glibc >=2.17,<3.0.a0",
+        "libgcc >=13",
+        "liblzma 5.6.3 hb9d3cd8_1",
+        "liblzma-devel 5.6.3 hb9d3cd8_1",
+        "xz-gpl-tools 5.6.3 hbcc6ac9_1",
+        "xz-tools 5.6.3 hb9d3cd8_1"
+    ],
+    "extracted_package_dir": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/xz-5.6.3-hbcc6ac9_1",
+    "files": [],
+    "fn": "xz-5.6.3-hbcc6ac9_1.conda",
+    "license": "0BSD AND LGPL-2.1-or-later AND GPL-2.0-or-later",
+    "link": {
+        "source": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/xz-5.6.3-hbcc6ac9_1",
+        "type": 1
+    },
+    "md5": "62aae173382a8aae284726353c6a6a24",
+    "name": "xz",
+    "package_tarball_full_path": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/xz-5.6.3-hbcc6ac9_1.tar.bz2",
+    "paths_data": {
+        "paths": [],
+        "paths_version": 1
+    },
+    "platform": "linux",
+    "requested_spec": "",
+    "sha256": "9cef529dcff25222427c9d90b9fc376888a59e138794b4336bbcd3331a5eea22",
+    "size": 23477,
+    "subdir": "linux-64",
+    "timestamp": 1733407455801,
+    "track_features": "",
+    "url": "https://conda.anaconda.org/conda-forge/linux-64/xz-5.6.3-hbcc6ac9_1.conda",
+    "version": "5.6.3"
+}

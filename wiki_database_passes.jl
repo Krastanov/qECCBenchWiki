@@ -2,6 +2,8 @@ using Logging
 using TerminalLoggers
 using ProgressLogging
 
+export run_evaluations, prep_everything, code_metadata
+
 global_logger(TerminalLogger(right_justify=120))
 
 include("_0.helpers_and_metadata/helpers.jl")
@@ -46,8 +48,8 @@ function prep_folders(code_metadata)
     end
 end
 
-function prep_everything(code_metada)
-    prep_folders(code_metada)
-    prep_figures(code_metada)
-    prep_markdown(code_metada)
+function prep_everything(code_metadata; plot=true, markdown=true)
+    prep_folders(code_metadata)
+    plot && prep_figures(code_metadata)
+    markdown && prep_markdown(code_metadata)
 end

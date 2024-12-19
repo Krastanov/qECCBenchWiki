@@ -1,0 +1,57 @@
+{
+    "arch": "x86_64",
+    "build": "h0f3a69f_0",
+    "build_number": 0,
+    "build_string": "h0f3a69f_0",
+    "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+    "constrains": [
+        "__glibc >=2.17"
+    ],
+    "depends": [
+        "__glibc >=2.17,<3.0.a0",
+        "libgcc >=13",
+        "libstdcxx >=13"
+    ],
+    "extracted_package_dir": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/uv-0.5.10-h0f3a69f_0",
+    "files": [
+        "bin/uv",
+        "bin/uvx"
+    ],
+    "fn": "uv-0.5.10-h0f3a69f_0.conda",
+    "license": "Apache-2.0 OR MIT",
+    "link": {
+        "source": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/uv-0.5.10-h0f3a69f_0",
+        "type": 1
+    },
+    "md5": "4ae185c7bfbbd547e607e5da7d54fcbd",
+    "name": "uv",
+    "package_tarball_full_path": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/uv-0.5.10-h0f3a69f_0.tar.bz2",
+    "paths_data": {
+        "paths": [
+            {
+                "_path": "bin/uv",
+                "path_type": "hardlink",
+                "sha256": "790cc11828baf7af2b5c3391b4a5a35d1fa6042f4abdcde38830fb06cc9c81e6",
+                "sha256_in_prefix": "790cc11828baf7af2b5c3391b4a5a35d1fa6042f4abdcde38830fb06cc9c81e6",
+                "size_in_bytes": 35375176
+            },
+            {
+                "_path": "bin/uvx",
+                "path_type": "hardlink",
+                "sha256": "2dc16094898b9e6ea07bd52b724efb3cf30afcab6efafd4c84d8dbc669626847",
+                "sha256_in_prefix": "2dc16094898b9e6ea07bd52b724efb3cf30afcab6efafd4c84d8dbc669626847",
+                "size_in_bytes": 358744
+            }
+        ],
+        "paths_version": 1
+    },
+    "platform": "linux",
+    "requested_spec": "uv[version='>=0.4']",
+    "sha256": "7c3caf54a016adde74f112087672d26511cdb67f2d6fe15b86da4ab6da432527",
+    "size": 10499821,
+    "subdir": "linux-64",
+    "timestamp": 1734537153777,
+    "track_features": "",
+    "url": "https://conda.anaconda.org/conda-forge/linux-64/uv-0.5.10-h0f3a69f_0.conda",
+    "version": "0.5.10"
+}

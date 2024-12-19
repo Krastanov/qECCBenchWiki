@@ -6,6 +6,7 @@ using Mustache
 
 function make_markdown_page(codetypename, metadata)
     family_strs = ["($(join(string.(s),", ")))" for s in metadata[:family]] # otherwise there is an annoying trailing comma
+    @debug family_strs
     rendered = render_from_file(joinpath((@__DIR__), "code_template.md"), (;codetypename, metadata..., family_strs))
     write(joinpath((@__DIR__), "../codes/$codetypename/index.md"), rendered)
 end

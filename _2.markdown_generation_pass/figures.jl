@@ -2,8 +2,8 @@ module CodeFigures
 
 using Makie, CairoMakie
 using Quantikz
-using QuantumClifford: stab_to_gf2
-using QuantumClifford.ECC: TableDecoder, stabilizerplot_axis, parity_checks, iscss, parity_checks_z, parity_checks_x
+using QuantumClifford: stab_to_gf2, stabilizerplot_axis
+using QuantumClifford.ECC: TableDecoder, parity_checks, iscss, parity_checks_z, parity_checks_x, code_n, naive_encoding_circuit, naive_syndrome_circuit, shor_syndrome_circuit
 
 include("../_0.helpers_and_metadata/helpers.jl")
 include("../_0.helpers_and_metadata/db_helpers.jl")
@@ -28,14 +28,20 @@ function make_decoder_figure(phys_errors, results;
     fresults = copy(results)
     fresults[results.==0] .= NaN
 
-    f = Figure(size=(1000,400))
-    a = Axis(f[1:7,1:3],
+    f = Figure(size=(1000,600))
+    a = Axis(f[1:7,1:6],
         xscale=log10, yscale=log10,
         limits=(minlim,maxlim,minlim,maxlim),
         aspect=DataAspect(),
         xlabel="physical error rate",
         ylabel="logical error rate",
-        title=title)
+        title=title,
+        titlesize=25,
+        xlabelsize=20,
+        ylabelsize=20,
+        xticklabelsize=15,
+        yticklabelsize=15,
+        )
 
     singlecode = size(results,3) == 1
     plotcolor(iᶜ,iᵈ) = singlecode ? colors[iᵈ] : colors[iᶜ]
@@ -44,41 +50,41 @@ function make_decoder_figure(phys_errors, results;
     b = lines!(a, [minlim,maxlim],[minlim,maxlim], color=:black)
     for (iᶜ,iᵈ,iˢ) in Iterators.product(axes.((fresults,), (3,4,5))...)
         if single_error
-            scatter!(a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), marker=markers[iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            lines!(  a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), marker=markers[iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
+            scatter!(a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), marker=markers[iˢ], color=plotcolor(iᶜ,iᵈ), markersize=10)
+            lines!(  a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ], linewidth=3)
         else
-            scatter!(a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], marker=:+, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            scatter!(a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], marker=:x, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            lines!(  a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], marker=:+, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            lines!(  a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], marker=:x, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
+            scatter!(a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], marker=:+, color=plotcolor(iᶜ,iᵈ), markersize=10)
+            scatter!(a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], marker=:x, color=plotcolor(iᶜ,iᵈ), markersize=10)
+            lines!(  a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ], linewidth=3)
+            lines!(  a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ], linewidth=3)
         end
     end
     ca = []
     for (iᶜ,label) in enumerate(codelabels)
         push!(ca, lines!(a, [NaN], [NaN], color=plotcolor(iᶜ,1), label=label))
     end
-    Legend(f[1:2,4],ca,codelabels, "Code", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=2)
+    Legend(f[1:2,7],ca,codelabels, "Code", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=2, titlesize=25, labelsize=20)
     la = []
     for (iᵈ,label) in enumerate(decoderlabels)
         push!(la, lines!(a, [NaN], [NaN], linestyle=linestyles[iᵈ], color=decoderlegendcolor(iᵈ), label=label))
     end
-    Legend(f[3:6,4],la,decoderlabels, "Decoder", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=1)
+    Legend(f[3:6,7],la,decoderlabels, "Decoder", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=1, titlesize=25, labelsize=20)
     ma = []
     if single_error
         for (iˢ,label) in enumerate(setuplabels)
             push!(ma, scatter!(a, [NaN], [NaN], marker=markers[iˢ], color=:gray, label=label))
         end
-        Legend(f[7,4],ma,setuplabels, "Circuit Type", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=2)
+        Legend(f[7,7],ma,setuplabels, "Circuit Type", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=2, titlesize=25, labelsize=20)
     else
         push!(ma, scatter!(a, [NaN], [NaN], marker=:+, color=:gray, label="X"))
         push!(ma, scatter!(a, [NaN], [NaN], marker=:x, color=:gray, label="Z"))
-        Legend(f[7,4],ma,["X", "Z"], "Logical Error", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=2)
+        Legend(f[7,7],ma,["X", "Z"], "Logical Error", framevisible = false, halign=:left, titlehalign=:left, valign=:top, nbanks=2, titlesize=25, labelsize=20)
     end
     f
 end
 
 function prep_figures(code_metadata)
-    for (codetype, metadata) in code_metadata
+    Threads.@threads :greedy for (codetype, metadata) in code_metadata
         codetypename = typenameof(codetype)
         @info "Plotting figures for $(codetypename) ..."
         codes = [codetype(instance_args...) for instance_args in metadata[:family]]
@@ -90,7 +96,7 @@ function prep_figures(code_metadata)
 
         single_error = length(decoders)>1 || decoders==[TableDecoder]
 
-        # Plotting summary fig
+        # Plotting benchmarking summary fig
         f = make_decoder_figure(e, r;
             title="$(codetypename)",
             codelabels=instancenameof.(codes),
@@ -139,20 +145,20 @@ function prep_figures(code_metadata)
             colgap!(f.layout, 1, Relative(0.15))
             save("codes/$(codetypename)/$(instancenameof(c)).png", f)
             # Plotting circuits
-            continue # skip circuit plots
-            if nqubits(c) <= 15
+            if code_n(c) <= 10
                 try
-                    savecircuit(naive_encoding_circuit(c), "codes/$(codetypename)/$(c)_encoding.png")
+                    savecircuit(naive_encoding_circuit(c), "codes/$(codetypename)/$(instancenameof(c))_encoding.png")
                 catch
                     @error "$(c) failed to plot `naive_encoding_circuit`"
                 end
                 try
-                    savecircuit(naive_syndrome_circuit(c)[1], "codes/$(codetypename)/$(c)_naive_syndrome.png")
+                    savecircuit(naive_syndrome_circuit(c)[1], "codes/$(codetypename)/$(instancenameof(c))_naive_syndrome.png")
                 catch
                     @error "$(c) failed to plot `naive_syndrome_circuit`"
                 end
                 try
-                    savecircuit(vcat(shor_syndrome_circuit(c)[1:2]...), "codes/$(codetypename)/$(c)_naive_syndrome.png")
+                    error("shor syndrome circuit plotting is problematic, fix it") #TODO
+                    savecircuit(vcat(shor_syndrome_circuit(c)[1:2]...), "codes/$(codetypename)/$(instancenameof(c))_shor_syndrome.png")
                 catch
                     @error "$(c) failed to plot `shor_syndrome_circuit`"
                 end

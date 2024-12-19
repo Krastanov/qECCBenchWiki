@@ -1,0 +1,251 @@
+{
+    "arch": "x86_64",
+    "build": "hbcc6ac9_1",
+    "build_number": 1,
+    "build_string": "hbcc6ac9_1",
+    "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+    "constrains": [],
+    "depends": [
+        "__glibc >=2.17,<3.0.a0",
+        "libgcc >=13",
+        "liblzma 5.6.3 hb9d3cd8_1"
+    ],
+    "extracted_package_dir": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/xz-gpl-tools-5.6.3-hbcc6ac9_1",
+    "files": [
+        "bin/lzcmp",
+        "bin/lzdiff",
+        "bin/lzegrep",
+        "bin/lzfgrep",
+        "bin/lzgrep",
+        "bin/lzless",
+        "bin/lzmore",
+        "bin/xzcmp",
+        "bin/xzdiff",
+        "bin/xzegrep",
+        "bin/xzfgrep",
+        "bin/xzgrep",
+        "bin/xzless",
+        "bin/xzmore",
+        "share/doc/xz/COPYING.GPLv2",
+        "share/man/man1/lzcmp.1",
+        "share/man/man1/lzdiff.1",
+        "share/man/man1/lzegrep.1",
+        "share/man/man1/lzfgrep.1",
+        "share/man/man1/lzgrep.1",
+        "share/man/man1/lzless.1",
+        "share/man/man1/lzmore.1",
+        "share/man/man1/xzcmp.1",
+        "share/man/man1/xzdiff.1",
+        "share/man/man1/xzegrep.1",
+        "share/man/man1/xzfgrep.1",
+        "share/man/man1/xzgrep.1",
+        "share/man/man1/xzless.1",
+        "share/man/man1/xzmore.1"
+    ],
+    "fn": "xz-gpl-tools-5.6.3-hbcc6ac9_1.conda",
+    "license": "0BSD AND LGPL-2.1-or-later AND GPL-2.0-or-later",
+    "link": {
+        "source": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/xz-gpl-tools-5.6.3-hbcc6ac9_1",
+        "type": 1
+    },
+    "md5": "f529917bab7862aaad6867bf2ea47a99",
+    "name": "xz-gpl-tools",
+    "package_tarball_full_path": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/xz-gpl-tools-5.6.3-hbcc6ac9_1.tar.bz2",
+    "paths_data": {
+        "paths": [
+            {
+                "_path": "bin/lzcmp",
+                "path_type": "softlink",
+                "sha256_in_prefix": "08537b7f1e8fe280a2f6756b553ded11ba779516b61e1d0c7f1dde74a687a0b5",
+                "size_in_bytes": 7588
+            },
+            {
+                "_path": "bin/lzdiff",
+                "path_type": "softlink",
+                "sha256_in_prefix": "08537b7f1e8fe280a2f6756b553ded11ba779516b61e1d0c7f1dde74a687a0b5",
+                "size_in_bytes": 7588
+            },
+            {
+                "_path": "bin/lzegrep",
+                "path_type": "softlink",
+                "sha256_in_prefix": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "size_in_bytes": 10413
+            },
+            {
+                "_path": "bin/lzfgrep",
+                "path_type": "softlink",
+                "sha256_in_prefix": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "size_in_bytes": 10413
+            },
+            {
+                "_path": "bin/lzgrep",
+                "path_type": "softlink",
+                "sha256_in_prefix": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "size_in_bytes": 10413
+            },
+            {
+                "_path": "bin/lzless",
+                "path_type": "softlink",
+                "sha256_in_prefix": "9df772d3c03708cf7c5f2179661efc3d44d52cf9fa87e10fdfec5a7d4f99b4e2",
+                "size_in_bytes": 2383
+            },
+            {
+                "_path": "bin/lzmore",
+                "path_type": "softlink",
+                "sha256_in_prefix": "45f85e98096a8ecfaca84728eb80ae3b99f8b0b532e6306ccc0afb9f510d0d79",
+                "size_in_bytes": 2234
+            },
+            {
+                "_path": "bin/xzcmp",
+                "path_type": "softlink",
+                "sha256_in_prefix": "08537b7f1e8fe280a2f6756b553ded11ba779516b61e1d0c7f1dde74a687a0b5",
+                "size_in_bytes": 7588
+            },
+            {
+                "_path": "bin/xzdiff",
+                "path_type": "hardlink",
+                "sha256": "08537b7f1e8fe280a2f6756b553ded11ba779516b61e1d0c7f1dde74a687a0b5",
+                "sha256_in_prefix": "08537b7f1e8fe280a2f6756b553ded11ba779516b61e1d0c7f1dde74a687a0b5",
+                "size_in_bytes": 7588
+            },
+            {
+                "_path": "bin/xzegrep",
+                "path_type": "softlink",
+                "sha256_in_prefix": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "size_in_bytes": 10413
+            },
+            {
+                "_path": "bin/xzfgrep",
+                "path_type": "softlink",
+                "sha256_in_prefix": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "size_in_bytes": 10413
+            },
+            {
+                "_path": "bin/xzgrep",
+                "path_type": "hardlink",
+                "sha256": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "sha256_in_prefix": "82acdcfc2c0a41ed46aff25e9948d48f00ad04a1926cb3c0e0397e14c8df1358",
+                "size_in_bytes": 10413
+            },
+            {
+                "_path": "bin/xzless",
+                "path_type": "hardlink",
+                "sha256": "9df772d3c03708cf7c5f2179661efc3d44d52cf9fa87e10fdfec5a7d4f99b4e2",
+                "sha256_in_prefix": "9df772d3c03708cf7c5f2179661efc3d44d52cf9fa87e10fdfec5a7d4f99b4e2",
+                "size_in_bytes": 2383
+            },
+            {
+                "_path": "bin/xzmore",
+                "path_type": "hardlink",
+                "sha256": "45f85e98096a8ecfaca84728eb80ae3b99f8b0b532e6306ccc0afb9f510d0d79",
+                "sha256_in_prefix": "45f85e98096a8ecfaca84728eb80ae3b99f8b0b532e6306ccc0afb9f510d0d79",
+                "size_in_bytes": 2234
+            },
+            {
+                "_path": "share/doc/xz/COPYING.GPLv2",
+                "path_type": "hardlink",
+                "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+                "sha256_in_prefix": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+                "size_in_bytes": 18092
+            },
+            {
+                "_path": "share/man/man1/lzcmp.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "84d29a07ab0bdaec3313da1bc47c86622f8c2ad1a1aaab5739fc77635e954965",
+                "size_in_bytes": 1583
+            },
+            {
+                "_path": "share/man/man1/lzdiff.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "84d29a07ab0bdaec3313da1bc47c86622f8c2ad1a1aaab5739fc77635e954965",
+                "size_in_bytes": 1583
+            },
+            {
+                "_path": "share/man/man1/lzegrep.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "size_in_bytes": 2202
+            },
+            {
+                "_path": "share/man/man1/lzfgrep.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "size_in_bytes": 2202
+            },
+            {
+                "_path": "share/man/man1/lzgrep.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "size_in_bytes": 2202
+            },
+            {
+                "_path": "share/man/man1/lzless.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "87818fbf79f3e5fde634d9664679cdd55edd1e8aff2517b060d592cd93967a60",
+                "size_in_bytes": 1336
+            },
+            {
+                "_path": "share/man/man1/lzmore.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "6616d499a8fed6490affe103b2dad82db156d73a6be5e74f65a3c19c0b5e108b",
+                "size_in_bytes": 1206
+            },
+            {
+                "_path": "share/man/man1/xzcmp.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "84d29a07ab0bdaec3313da1bc47c86622f8c2ad1a1aaab5739fc77635e954965",
+                "size_in_bytes": 1583
+            },
+            {
+                "_path": "share/man/man1/xzdiff.1",
+                "path_type": "hardlink",
+                "sha256": "84d29a07ab0bdaec3313da1bc47c86622f8c2ad1a1aaab5739fc77635e954965",
+                "sha256_in_prefix": "84d29a07ab0bdaec3313da1bc47c86622f8c2ad1a1aaab5739fc77635e954965",
+                "size_in_bytes": 1583
+            },
+            {
+                "_path": "share/man/man1/xzegrep.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "size_in_bytes": 2202
+            },
+            {
+                "_path": "share/man/man1/xzfgrep.1",
+                "path_type": "softlink",
+                "sha256_in_prefix": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "size_in_bytes": 2202
+            },
+            {
+                "_path": "share/man/man1/xzgrep.1",
+                "path_type": "hardlink",
+                "sha256": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "sha256_in_prefix": "8db4edc110dd8cec6152f8d4397a8e9785ccea84c45af41358c66a7d529acb3d",
+                "size_in_bytes": 2202
+            },
+            {
+                "_path": "share/man/man1/xzless.1",
+                "path_type": "hardlink",
+                "sha256": "87818fbf79f3e5fde634d9664679cdd55edd1e8aff2517b060d592cd93967a60",
+                "sha256_in_prefix": "87818fbf79f3e5fde634d9664679cdd55edd1e8aff2517b060d592cd93967a60",
+                "size_in_bytes": 1336
+            },
+            {
+                "_path": "share/man/man1/xzmore.1",
+                "path_type": "hardlink",
+                "sha256": "6616d499a8fed6490affe103b2dad82db156d73a6be5e74f65a3c19c0b5e108b",
+                "sha256_in_prefix": "6616d499a8fed6490affe103b2dad82db156d73a6be5e74f65a3c19c0b5e108b",
+                "size_in_bytes": 1206
+            }
+        ],
+        "paths_version": 1
+    },
+    "platform": "linux",
+    "requested_spec": "",
+    "sha256": "4e104b7c75c2f26a96032a1c6cda51430da1dea318c74f9e3568902b2f5030e1",
+    "size": 33354,
+    "subdir": "linux-64",
+    "timestamp": 1733407444641,
+    "track_features": "",
+    "url": "https://conda.anaconda.org/conda-forge/linux-64/xz-gpl-tools-5.6.3-hbcc6ac9_1.conda",
+    "version": "5.6.3"
+}

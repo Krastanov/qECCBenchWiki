@@ -1,4 +1,4 @@
-#!/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/bin/python3.12
+#!/home/runner/work/qECCBenchWiki/qECCBenchWiki/.CondaPkg/env/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys

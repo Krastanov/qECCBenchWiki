@@ -1,0 +1,65 @@
+{
+    "arch": "x86_64",
+    "build": "hc0a3c3a_7",
+    "build_number": 7,
+    "build_string": "hc0a3c3a_7",
+    "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+    "constrains": [],
+    "depends": [],
+    "extracted_package_dir": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/libstdcxx-ng-12.3.0-hc0a3c3a_7",
+    "files": [
+        "lib/libstdc++.so",
+        "lib/libstdc++.so.6",
+        "lib/libstdc++.so.6.0.30",
+        "share/licenses/libstdc++/RUNTIME.LIBRARY.EXCEPTION"
+    ],
+    "fn": "libstdcxx-ng-12.3.0-hc0a3c3a_7.conda",
+    "license": "GPL-3.0-only WITH GCC-exception-3.1",
+    "link": {
+        "source": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/libstdcxx-ng-12.3.0-hc0a3c3a_7",
+        "type": 1
+    },
+    "md5": "eb9a7400a7e32886680d92588399f581",
+    "name": "libstdcxx-ng",
+    "package_tarball_full_path": "/home/runner/.julia/scratchspaces/0b3b1443-0f03-428d-bdfb-f27f9c1191ea/root/pkgs/libstdcxx-ng-12.3.0-hc0a3c3a_7.tar.bz2",
+    "paths_data": {
+        "paths": [
+            {
+                "_path": "lib/libstdc++.so",
+                "path_type": "softlink",
+                "sha256_in_prefix": "bd36c0f94b9a98560f7631491acd905323b06006c620a3192b64b97ced098f06",
+                "size_in_bytes": 12201608
+            },
+            {
+                "_path": "lib/libstdc++.so.6",
+                "path_type": "softlink",
+                "sha256_in_prefix": "bd36c0f94b9a98560f7631491acd905323b06006c620a3192b64b97ced098f06",
+                "size_in_bytes": 12201608
+            },
+            {
+                "_path": "lib/libstdc++.so.6.0.30",
+                "path_type": "hardlink",
+                "sha256": "bd36c0f94b9a98560f7631491acd905323b06006c620a3192b64b97ced098f06",
+                "sha256_in_prefix": "bd36c0f94b9a98560f7631491acd905323b06006c620a3192b64b97ced098f06",
+                "size_in_bytes": 12201608
+            },
+            {
+                "_path": "share/licenses/libstdc++/RUNTIME.LIBRARY.EXCEPTION",
+                "path_type": "hardlink",
+                "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+                "sha256_in_prefix": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+                "size_in_bytes": 3324
+            }
+        ],
+        "paths_version": 1
+    },
+    "platform": "linux",
+    "requested_spec": "libstdcxx-ng[version='>=3.4,<13.0']",
+    "sha256": "506b6cc8de87d1ace9ad242bf6562c7c12c455f0348ab800148f170ab3c2cbc0",
+    "size": 3474833,
+    "subdir": "linux-64",
+    "timestamp": 1715016637308,
+    "track_features": "",
+    "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-12.3.0-hc0a3c3a_7.conda",
+    "version": "12.3.0"
+}

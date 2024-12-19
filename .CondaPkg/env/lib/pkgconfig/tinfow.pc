@@ -7,10 +7,10 @@ libdir=${exec_prefix}/lib
 includedir=${prefix}/include/ncursesw
 abi_version=6
 major_version=6
-version=6.4.20240210
+version=6.5.20240427
 
 Name: tinfow
-Description: ncurses 6.4 terminal interface library
+Description: ncurses 6.5 terminal interface library
 Version: ${version}
 URL: https://invisible-island.net/ncurses
 Requires.private: 
