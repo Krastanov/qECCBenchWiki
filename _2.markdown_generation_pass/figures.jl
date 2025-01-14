@@ -2,8 +2,8 @@ module CodeFigures
 
 using Makie, CairoMakie
 using Quantikz
-using QuantumClifford: stab_to_gf2
-using QuantumClifford.ECC: TableDecoder, stabilizerplot_axis, parity_checks, iscss, parity_checks_z, parity_checks_x
+using QuantumClifford: stab_to_gf2, stabilizerplot_axis
+using QuantumClifford.ECC: TableDecoder, parity_checks, iscss, parity_checks_z, parity_checks_x
 
 include("../_0.helpers_and_metadata/helpers.jl")
 include("../_0.helpers_and_metadata/db_helpers.jl")
@@ -44,13 +44,13 @@ function make_decoder_figure(phys_errors, results;
     b = lines!(a, [minlim,maxlim],[minlim,maxlim], color=:black)
     for (iᶜ,iᵈ,iˢ) in Iterators.product(axes.((fresults,), (3,4,5))...)
         if single_error
-            scatter!(a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), marker=markers[iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            lines!(  a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), marker=markers[iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
+            scatter!(a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), marker=markers[iˢ], color=plotcolor(iᶜ,iᵈ))
+            lines!(  a, phys_errors, max.(fresults[:,1,iᶜ,iᵈ,iˢ],fresults[:,2,iᶜ,iᵈ,iˢ]), color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
         else
-            scatter!(a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], marker=:+, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            scatter!(a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], marker=:x, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            lines!(  a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], marker=:+, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
-            lines!(  a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], marker=:x, color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
+            scatter!(a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], marker=:+, color=plotcolor(iᶜ,iᵈ))
+            scatter!(a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], marker=:x, color=plotcolor(iᶜ,iᵈ))
+            lines!(  a, phys_errors, fresults[:,1,iᶜ,iᵈ,iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
+            lines!(  a, phys_errors, fresults[:,2,iᶜ,iᵈ,iˢ], color=plotcolor(iᶜ,iᵈ), linestyle=linestyles[iᵈ])
         end
     end
     ca = []

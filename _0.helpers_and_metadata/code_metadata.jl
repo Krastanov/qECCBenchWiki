@@ -2,7 +2,7 @@ module CodeMetadata
 
 using QuantumClifford
 using QuantumClifford.ECC
-import PyQDecoders
+#import PyQDecoders
 import LDPCDecoders
 
 const eᵐⁱⁿ = 0.00001
@@ -86,6 +86,28 @@ const code_metadata = Dict(
         :description => "My friend Nithin made this one. It is here as an example placeholder as we built out the page for this code family.",
         :redundantrows => true,
     ),
+    # Put in the 2BGA and GBC #
+    generalized_bicycle_codes => Dict(
+        :family => [([0 , 15, 16, 18], [0 ,  1, 24, 27], 35), 
+                    ([0 , 15, 16, 18], [0 ,  1, 24, 27], 35), 
+                    ([0 ,  1,  3,  7], [0 ,  1, 12, 19], 27), 
+                    ([0 ,  1,  3,  7], [0 ,  1, 12, 19], 27), 
+                    ([0 , 10,  6, 13], [0 , 25, 16, 12], 30), 
+                    ([0 , 10,  6, 13], [0 , 25, 16, 12], 30),
+                    ([0 ,  9, 28, 31], [0 ,  1, 21, 34], 36),
+                    ([0 ,  9, 28, 31], [0 ,  1, 21, 34], 36),
+                    ([0 ,  9, 28, 13], [0 ,  1, 21, 34], 36),
+                    ([0 ,  9, 28, 13], [0 ,  1,  3, 22], 36)],
+        :decoders => [BitFlipDecoder, BeliefPropDecoder, PyMatchingDecoder, PyBeliefPropDecoder],
+        :setups => [CommutationCheckECCSetup],
+        :ecczoo => "",
+        :errrange => (eᵐⁱⁿ, eᵐᵃˣ, steps)
+    )
+
+    #TwoBlockAlgebraCodes => Dict(
+   # #    :family => []
+    #)
+    
 )
 
 end
